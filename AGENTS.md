@@ -71,12 +71,19 @@ This repo has **no dependencies**. Cloud agents should boot instantly with the m
 | Deploy check | Confirm GitHub Actions Pages workflow succeeded |
 | Photography swap | Update URLs in `.hero-bg`, `.band-a`, `.band-b` in the `<style>` block |
 
-### If environment setup hangs
+### If environment setup hangs ("Waiting for environment…")
 
-1. Ensure `.cursor/environment.json` has no invalid `snapshot` ID and no blocking `install` script.
-2. In [Cursor Dashboard → Cloud Agents](https://cursor.com/dashboard?tab=cloud-agents), remove proxy secrets (`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`) unless Tailscale is configured.
-3. Use **Rebuild environment** or delete the saved personal environment and let the repo's `.cursor/environment.json` take over.
-4. If infrastructure errors persist (504/501), wait and retry — often server-side.
+**Fastest workaround (Mac):** Switch from **Cloud** to **Local** in the agent input bar (cloud icon at bottom). This repo has no dependencies — local agent works instantly for edits to `index.html`.
+
+**Fix cloud environment:**
+
+1. **Cancel** the stuck agent (stop button).
+2. Open [Cursor Dashboard → Cloud Agents → Yevucee/Alice-Website](https://cursor.com/dashboard?tab=cloud-agents).
+3. **Delete** the Personal environment (or click **Rebuild environment**). A saved snapshot from setup can block boot even when the update script is empty.
+4. Leave **Update script** empty — do not add `npm install`.
+5. Start a **new** cloud agent on the `main` branch (now has `.cursor/environment.json`).
+6. Remove proxy secrets (`HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY`) unless Tailscale is configured.
+7. If still stuck after 2–3 tries: likely a Cursor infrastructure outage (`EXEC_DAEMON_NOT_READY`). Check [status.cursor.com](https://status.cursor.com) and retry later, or use Local agent.
 
 ### Secrets
 
