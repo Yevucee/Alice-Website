@@ -1,4 +1,6 @@
-# Paste this into Cursor
+# Paste this into Cursor (legacy)
+
+> **Prefer `AGENTS.md`** — it is read automatically by Cursor agents on desktop, mobile, and cloud. This file is kept for reference.
 
 I have a finished static website in this folder. **Do not redesign, restyle, or rewrite it.** The look must stay byte-for-byte identical to `index.html` as provided.
 

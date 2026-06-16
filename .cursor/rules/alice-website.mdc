@@ -1,0 +1,21 @@
+---
+description: Alice the Time Bender static website — constraints and conventions
+alwaysApply: true
+---
+
+# Alice the Time Bender
+
+Always read `AGENTS.md` at the repo root before editing.
+
+## Stack
+
+- Single file: `index.html` (inline CSS + JS)
+- No build step, no `package.json`, no frameworks
+
+## Rules
+
+- Do not redesign or restyle unless the user explicitly requests it
+- Do not split `index.html` into separate asset files
+- Do not add npm dependencies or bundlers
+- Preview with `python3 -m http.server 8000` or open `index.html` in a browser
+- Brand palette: bone `#EDEBE7`, charcoal `#1A1A18`, black `#0b0b0a`, ochre `#B8923F`
