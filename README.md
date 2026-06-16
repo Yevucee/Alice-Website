@@ -45,10 +45,18 @@ This is a static site — it works on GitHub Pages, Netlify, Vercel, or Cloudfla
 
 **GitHub Pages (recommended):**
 
-1. Merge to `main`
-2. Repo **Settings → Pages → Build and deployment → Source:** GitHub Actions
-3. The `pages.yml` workflow deploys on every push to `main`
-4. Live URL will appear under Settings → Pages (typically `https://yevucee.github.io/Alice-Website/`)
+1. **One-time:** [Switch Pages source to GitHub Actions](.github/PAGES_SETUP.md)
+2. Push to `main` — the `pages.yml` workflow deploys automatically
+3. Live URL: **https://yevucee.github.io/Alice-Website/**
+4. Custom domain: see [docs/CUSTOM_DOMAIN.md](docs/CUSTOM_DOMAIN.md)
+
+## Quick start (Cursor)
+
+See [QUICKSTART.md](QUICKSTART.md) for Mac Local agent workflow, preview, and deploy.
+
+## Production content
+
+Replace placeholder photography: see [assets/README.md](assets/README.md).
 
 ## Notes
 
@@ -61,6 +69,10 @@ This is a static site — it works on GitHub Pages, Netlify, Vercel, or Cloudfla
 | File | Purpose |
 |------|---------|
 | `AGENTS.md` | Agent instructions (desktop, mobile, cloud) |
+| `QUICKSTART.md` | Mac Local agent workflow and preview |
+| `.github/PAGES_SETUP.md` | One-time GitHub Pages source fix |
+| `assets/README.md` | Production photo swap guide |
+| `docs/CUSTOM_DOMAIN.md` | Custom domain DNS + CNAME steps |
 | `.cursor/environment.json` | Minimal cloud VM config — no blocking install |
 | `.cursor/rules/alice-website.mdc` | Always-on project rules |
 | `CURSOR_PROMPT.md` | Legacy one-shot setup prompt (superseded by `AGENTS.md`) |

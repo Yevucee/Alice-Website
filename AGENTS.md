@@ -97,7 +97,13 @@ Works the same everywhere Cursor can open this repo:
 
 1. **Clone or open** the repo in Cursor (Mac app, web, or mobile).
 2. **Agent reads** this `AGENTS.md` automatically — no paste step needed.
-3. **Chat or Cloud Agent** — ask for specific edits; agent will follow constraints above.
+3. **Mac daily edits:** use **Local** agent — see [QUICKSTART.md](QUICKSTART.md).
 4. **Cloud Agent from phone** — start from the repo in Cursor mobile; cloud handles the VM, you review the PR.
 
 Legacy prompt file `CURSOR_PROMPT.md` mirrors the original setup instructions; prefer this `AGENTS.md` for ongoing work.
+
+## Production content
+
+- Photography: [assets/README.md](assets/README.md) — swap `--img-hero`, `--img-band-a`, `--img-band-b` in `index.html`
+- Custom domain: [docs/CUSTOM_DOMAIN.md](docs/CUSTOM_DOMAIN.md)
+- Pages setup: [.github/PAGES_SETUP.md](.github/PAGES_SETUP.md)
