@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice the Time Bender</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#EDEBE7; --bone-2:#E4E1DB; --ink:#1A1A18; --ink-soft:#56544d;
+    --black:#0b0b0a; --ochre:#B8923F; --line:rgba(26,26,24,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--ink);font-family:'EB Garamond',Georgia,serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .display{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:-.01em}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,64px)}
+  .eyebrow{font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft)}
+  .btn{display:inline-block;font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+       color:var(--ink);border:1px solid var(--ink);padding:16px 30px;border-radius:2px;transition:.25s}
+  .btn:hover{background:var(--ink);color:var(--bone)}
+  .btn-light{color:var(--bone);border-color:rgba(237,235,231,.5)}
+  .btn-light:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+      padding:20px clamp(24px,5vw,64px);transition:.3s}
+  nav.solid{background:rgba(237,235,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .mark{font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.02em}
+  nav .navcta{font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--ink);
+              border:1px solid var(--ink);padding:9px 18px;border-radius:2px}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;color:#f4f0e8}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+      background:
+        linear-gradient(90deg,rgba(8,7,6,.80) 0%,rgba(8,7,6,.40) 55%,rgba(20,14,6,.30) 100%),
+        linear-gradient(160deg,rgba(94,77,51,.55),rgba(21,17,10,.65)),
+        url('https://picsum.photos/id/1018/1800/1100?grayscale') center/cover no-repeat;
+      background-blend-mode:normal,multiply,normal;
+      filter:sepia(.35) contrast(1.03) brightness(.92)}
+  .hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
+  .hero h1{font-size:clamp(40px,6.4vw,90px);max-width:16ch;margin:22px 0 26px}
+  .hero .lede{font-size:clamp(18px,2.1vw,24px);max-width:40ch;color:#e6dfd1;margin-bottom:40px;font-style:italic}
+  .hero .cta-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .hero .micro{font-size:13px;letter-spacing:.04em;color:#b8b0a0}
+
+  /* PILLARS */
+  .pillars{border-bottom:1px solid var(--line);background:var(--bone-2)}
+  .pillars .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .pill{padding:40px 28px 40px 0;border-right:1px solid var(--line)}
+  .pill:last-child{border-right:0}
+  .pill .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;color:var(--ochre);line-height:1}
+  .pill h4{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;margin:12px 0 6px}
+  .pill p{font-size:16px;color:var(--ink-soft);line-height:1.45}
+  @media(max-width:860px){.pillars .wrap{grid-template-columns:1fr 1fr}.pill{border-right:0;border-bottom:1px solid var(--line);padding-right:0}}
+
+  /* POSITIONING SPLIT */
+  .split{padding:clamp(80px,11vw,150px) 0}
+  .split .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+  .split h2{font-size:clamp(34px,5vw,64px);max-width:13ch}
+  .split .two{display:grid;gap:30px}
+  .split .two .row{display:flex;gap:18px;align-items:flex-start}
+  .split .two .row .dot{font-family:'Cormorant Garamond',serif;color:var(--ochre);font-size:30px;line-height:1}
+  .split .two .row h5{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;margin-bottom:4px}
+  .split .two .row p{font-size:17px;color:var(--ink-soft)}
+  @media(max-width:820px){.split .wrap{grid-template-columns:1fr;gap:40px}}
+
+  /* IMAGE BAND */
+  .band{height:64vh;min-height:380px;position:relative;display:flex;align-items:flex-end;background-size:cover;background-position:center}
+  .band .cap{position:relative;z-index:2;color:#efe9df;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:22px clamp(24px,5vw,64px);opacity:.7}
+  .band-a{
+      background:
+        linear-gradient(180deg,rgba(40,30,18,.12),rgba(28,20,10,.55)),
+        linear-gradient(160deg,rgba(120,98,60,.45),rgba(36,26,16,.45)),
+        url('https://picsum.photos/id/1015/1800/1000?grayscale') center/cover no-repeat;
+      background-blend-mode:normal,multiply,normal;
+      filter:sepia(.4) contrast(1.02) brightness(.95)}
+  .band-b{
+      background:
+        linear-gradient(90deg,rgba(18,14,10,.72),rgba(18,14,10,.30)),
+        linear-gradient(160deg,rgba(110,90,55,.4),rgba(20,15,9,.55)),
+        url('https://picsum.photos/id/1039/1800/1000?grayscale') center/cover no-repeat;
+      background-blend-mode:normal,multiply,normal;
+      filter:sepia(.4) contrast(1.02) brightness(.9)}
+
+  /* SERVICES */
+  .services{padding:clamp(80px,11vw,140px) 0}
+  .sec-head{max-width:46ch;margin-bottom:54px}
+  .sec-head .eyebrow{margin-bottom:18px;display:block}
+  .sec-head h2{font-size:clamp(34px,5vw,60px)}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
+  .card{background:var(--bone);padding:34px 32px;cursor:pointer;transition:background .25s}
+  .card:hover{background:var(--bone-2)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .card h3{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.6vw,31px);font-weight:500;line-height:1.1}
+  .card .plus{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--ochre);transition:transform .3s;line-height:1}
+  .card.open .plus{transform:rotate(45deg)}
+  .card .tease{color:var(--ink-soft);font-size:16.5px;margin-top:8px}
+  .card .more{max-height:0;overflow:hidden;transition:max-height .4s ease,margin .4s ease;color:var(--ink-soft);font-size:16.5px}
+  .card.open .more{max-height:340px;margin-top:14px}
+
+  /* HOW */
+  .how{background:var(--bone-2);padding:clamp(80px,11vw,140px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .how .sec-head{margin-bottom:46px}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px)}
+  @media(max-width:820px){.how-grid{grid-template-columns:1fr}}
+  .how-grid .n{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--ochre);line-height:1}
+  .how-grid h4{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin:14px 0 8px}
+  .how-grid p{font-size:17px;color:var(--ink-soft)}
+  .how .closing{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,3vw,34px);margin-top:64px;text-align:center}
+
+  /* CONTACT */
+  .contact{background:var(--black);color:#f2efe8;padding:clamp(90px,13vw,170px) 0;text-align:center}
+  .contact h2{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7vw,92px);font-weight:500;margin-bottom:26px}
+  .contact p{max-width:48ch;margin:0 auto 36px;color:#d8d3c8}
+  .contact .meta{margin-top:40px;font-size:15px;color:#8d877c;letter-spacing:.02em;line-height:1.8}
+  footer{background:var(--black);color:#6c675d;text-align:center;padding:0 clamp(24px,5vw,64px) 80px;font-style:italic;font-size:15px}
+  footer div{max-width:64ch;margin:0 auto}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="mark">Alice the Time Bender</div>
+  <a class="navcta" href="#contact">Begin a conversation</a>
+</nav>
+
+<!-- HERO: 5-second clarity + single CTA -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow" style="color:#cfc6b4">Family enterprise advisory · by referral</span>
+    <h1 class="display">We steward families. And we move when it matters.</h1>
+    <p class="lede">Discreet, long-term guidance through strategy, governance, succession and legacy — with the ability to drop in, go anywhere, and bring back knowledge, truth and reality.</p>
+    <div class="cta-row">
+      <a class="btn btn-light" href="#contact">Begin a conversation</a>
+      <span class="micro">Based in Europe · Working globally</span>
+    </div>
+  </div>
+</header>
+
+<!-- PILLARS: trust signals, instantly scannable -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="pill reveal"><div class="n">01</div><h4>Discreet by design</h4><p>Quietly referred, rarely found. Confidentiality is the foundation.</p></div>
+    <div class="pill reveal"><div class="n">02</div><h4>Long-term stewards</h4><p>A few families at a time, for years — not transactions.</p></div>
+    <div class="pill reveal"><div class="n">03</div><h4>On the ground in days</h4><p>When it counts, we travel, embed and act — fast.</p></div>
+    <div class="pill reveal"><div class="n">04</div><h4>Hands on, human</h4><p>People help us understand reality. We go and see for ourselves.</p></div>
+  </div>
+</section>
+
+<!-- POSITIONING: the two truths, fast to grasp -->
+<section class="split">
+  <div class="wrap">
+    <h2 class="display reveal">Calm in the long term. Decisive when it counts.</h2>
+    <div class="two reveal">
+      <div class="row"><span class="dot">—</span><div><h5>We hold space</h5><p>For the conversations that shape continuity. Carefully, quietly, before they're needed.</p></div></div>
+      <div class="row"><span class="dot">—</span><div><h5>We bend time</h5><p>The trust we've built lets us step into a project at short notice and go all out.</p></div></div>
+      <div class="row"><span class="dot">—</span><div><h5>We bring reality</h5><p>No nonsense, with heart. Knowledge and truth, from inside the business.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="band band-a reveal"><span class="cap">Stewarding what should endure</span></div>
+
+<!-- SERVICES: scannable grid, depth on click (progressive disclosure) -->
+<section class="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2 class="display">Calm guidance, decisive support.</h2>
+    </div>
+    <div class="svc-grid reveal" id="svc">
+      <div class="card"><div class="top"><h3>Strategy &amp; Governance</h3><span class="plus">+</span></div><p class="tease">Defining direction and governance models around your family's dynamics.</p><div class="more">We lead structured, thoughtful conversations that define strategic direction and governance models, each one shaped around the unique dynamics of the family and its enterprise.</div></div>
+      <div class="card"><div class="top"><h3>Mergers &amp; Acquisitions</h3><span class="plus">+</span></div><p class="tease">Well-tested models with deep, on-the-ground involvement.</p><div class="more">Technology helps us process information; people help us understand reality. We spend our time where value and risk are created — inside operations, close to the people shaping the business. When a deal needs assessing at short notice, we move.</div></div>
+      <div class="card"><div class="top"><h3>Succession &amp; Legacy</h3><span class="plus">+</span></div><p class="tease">Navigating transitions and generational shifts.</p><div class="more">We support families through leadership transitions, succession and generational shifts, aligning future intentions with present responsibilities.</div></div>
+      <div class="card"><div class="top"><h3>Compliance &amp; Structure</h3><span class="plus">+</span></div><p class="tease">Frameworks for alignment, clarity and resilience.</p><div class="more">We shape governance frameworks that support regulatory alignment, internal clarity and long-term resilience.</div></div>
+      <div class="card"><div class="top"><h3>Family Office &amp; Investment</h3><span class="plus">+</span></div><p class="tease">Structures for thoughtful oversight of shared assets.</p><div class="more">We help design structures for family offices and holdings, supporting thoughtful oversight of portfolios and shared assets.</div></div>
+      <div class="card"><div class="top"><h3>Reputational Risk</h3><span class="plus">+</span></div><p class="tease">Discreet due diligence on exposure and core assets.</p><div class="more">We help families understand where they are exposed — from public perception to internal dynamics and across the supply chain. In moments of uncertainty, transition or expansion, we run calm, discreet due diligence. When something looks wrong, we go and see for ourselves.</div></div>
+      <div class="card"><div class="top"><h3>Embedded Stewardship</h3><span class="plus">+</span></div><p class="tease">We embed within the assets to strengthen them from inside.</p><div class="more">When it's wanted, we embed into internal roles and conversations to strengthen the living system from the inside out. We coach, we align, we translate intent into execution — and we stay for as long as we're useful.</div></div>
+      <div class="card" style="display:flex;align-items:center;justify-content:center;background:var(--bone-2)"><div style="text-align:center"><p style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:14px">Not sure where to start?</p><a class="btn" href="#contact">Begin a conversation</a></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="band band-b reveal"><span class="cap">On the ground, where value and risk are made</span></div>
+
+<!-- HOW: three principles, not four paragraphs -->
+<section class="how">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">How we work</span><h2 class="display">Personal. Discreet. Pragmatic.</h2></div>
+    <div class="how-grid reveal">
+      <div><div class="n">01</div><h4>Few clients, deep focus</h4><p>We limit our collaborations to a small number of families — ensuring depth, focus and confidentiality.</p></div>
+      <div><div class="n">02</div><h4>Structured, yet adaptable</h4><p>Rooted in emotional awareness and respect for each family's inner landscape, shaped to the working style that suits.</p></div>
+      <div><div class="n">03</div><h4>Trust that lets us act</h4><p>Because we already know what's at stake, we can move at short notice — and bring back knowledge, truth and reality.</p></div>
+    </div>
+    <p class="closing reveal">Calm. Decisive. Discreet.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <h2>Let's begin a conversation.</h2>
+    <p>We value the relationships we've built over time, and we're always open to new ones where there's mutual curiosity.</p>
+    <a class="btn btn-light" href="mailto:hello@alicethetimebender.com">hello@alicethetimebender.com</a>
+    <div class="meta">Based in Europe. Working globally. On the ground wherever needed.<br>References available upon request.</div>
+  </div>
+</section>
+
+<footer><div style="padding-top:64px">You won't find us in many places. That's by design. Most of our work begins with a conversation, not a campaign. Quietly referred. Occasionally found. Known by few.</div></footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.classList.toggle('solid',scrollY>60)});
+  document.querySelectorAll('#svc .card').forEach(c=>{
+    if(c.querySelector('.more')) c.addEventListener('click',()=>c.classList.toggle('open'));
+  });
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
