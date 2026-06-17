@@ -51,11 +51,11 @@
   .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;color:#f4f0e8}
   .hero-bg{position:absolute;inset:0;z-index:0;
       background:
-        linear-gradient(90deg,rgba(8,7,6,.80) 0%,rgba(8,7,6,.40) 55%,rgba(20,14,6,.30) 100%),
-        linear-gradient(160deg,rgba(94,77,51,.55),rgba(21,17,10,.65)),
-        var(--img-hero) center/cover no-repeat;
+        linear-gradient(90deg,rgba(8,7,6,.58) 0%,rgba(8,7,6,.22) 55%,rgba(20,14,6,.10) 100%),
+        linear-gradient(160deg,rgba(150,128,90,.28),rgba(40,32,18,.38)),
+        url('https://picsum.photos/id/1018/1800/1100?grayscale') center/cover no-repeat;
       background-blend-mode:normal,multiply,normal;
-      filter:sepia(.35) contrast(1.03) brightness(.92)}
+      filter:sepia(.20) contrast(1.01) brightness(1.18)}
   .hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
   .hero h1{font-size:clamp(40px,6.4vw,90px);max-width:16ch;margin:22px 0 26px}
   .hero .lede{font-size:clamp(18px,2.1vw,24px);max-width:40ch;color:#e6dfd1;margin-bottom:40px;font-style:italic}
@@ -64,7 +64,7 @@
 
   /* PILLARS */
   .pillars{border-bottom:1px solid var(--line);background:var(--bone-2)}
-  .pillars .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .pillars .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
   .pill{padding:40px 28px 40px 0;border-right:1px solid var(--line)}
   .pill:last-child{border-right:0}
   .pill .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;color:var(--ochre);line-height:1}
@@ -116,7 +116,9 @@
   .card.open .plus{transform:rotate(45deg)}
   .card .tease{color:var(--ink-soft);font-size:16.5px;margin-top:8px}
   .card .more{max-height:0;overflow:hidden;transition:max-height .4s ease,margin .4s ease;color:var(--ink-soft);font-size:16.5px}
-  .card.open .more{max-height:340px;margin-top:14px}
+  .card.open .more{max-height:520px;margin-top:14px}
+  .card .more .te{display:block;margin-top:12px;font-style:italic;color:var(--ink)}
+  .card .more .te b{font-style:normal;letter-spacing:.04em;font-size:13px;text-transform:uppercase;color:var(--ochre)}
 
   /* HOW */
   .how{background:var(--bone-2);padding:clamp(80px,11vw,140px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -153,7 +155,7 @@
   <div class="hero-bg"></div>
   <div class="wrap">
     <span class="eyebrow" style="color:#cfc6b4">Family enterprise advisory · by referral</span>
-    <h1 class="display">We steward families. And we move when it matters.</h1>
+    <h1 class="display">We guide families and family enterprises, and we move when it matters.</h1>
     <p class="lede">Discreet, long-term guidance through strategy, governance, succession and legacy — with the ability to drop in, go anywhere, and bring back knowledge, truth and reality.</p>
     <div class="cta-row">
       <a class="btn btn-light" href="#contact">Begin a conversation</a>
@@ -166,9 +168,10 @@
 <section class="pillars">
   <div class="wrap">
     <div class="pill reveal"><div class="n">01</div><h4>Discreet by design</h4><p>Quietly referred, rarely found. Confidentiality is the foundation.</p></div>
-    <div class="pill reveal"><div class="n">02</div><h4>Long-term stewards</h4><p>A few families at a time, for years — not transactions.</p></div>
+    <div class="pill reveal"><div class="n">02</div><h4>Long-term stewards</h4><p>A few families at a time, for years, across generations.</p></div>
     <div class="pill reveal"><div class="n">03</div><h4>On the ground in days</h4><p>When it counts, we travel, embed and act — fast.</p></div>
     <div class="pill reveal"><div class="n">04</div><h4>Hands on, human</h4><p>People help us understand reality. We go and see for ourselves.</p></div>
+    <div class="pill reveal"><div class="n">05</div><h4>Backed by cutting-edge technology</h4><p>Technology helps us process information; people help us understand reality.</p></div>
   </div>
 </section>
 
@@ -208,14 +211,21 @@
 
 <div class="band band-b reveal"><span class="cap">On the ground, where value and risk are made</span></div>
 
-<!-- HOW: three principles, not four paragraphs -->
 <section class="how">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">How we work</span><h2 class="display">Personal. Discreet. Pragmatic.</h2></div>
-    <div class="how-grid reveal">
-      <div><div class="n">01</div><h4>Few clients, deep focus</h4><p>We limit our collaborations to a small number of families — ensuring depth, focus and confidentiality.</p></div>
-      <div><div class="n">02</div><h4>Structured, yet adaptable</h4><p>Rooted in emotional awareness and respect for each family's inner landscape, shaped to the working style that suits.</p></div>
-      <div><div class="n">03</div><h4>Trust that lets us act</h4><p>Because we already know what's at stake, we can move at short notice — and bring back knowledge, truth and reality.</p></div>
+    <div class="sec-head reveal"><span class="eyebrow">How we have worked</span><h2 class="display">A track record, quietly built.</h2></div>
+    <div class="svc-grid reveal" id="cases">
+      <div class="card"><div class="top"><h3>Family Strategy &amp; Generational Transition</h3><span class="plus">+</span></div><p class="tease">Succession, ownership transitions and long-term stewardship across generations.</p><div class="more">Supported a multi-generational family in navigating succession, ownership transitions, and long-term stewardship. Facilitated conversations across generations, aligned expectations around future roles and responsibilities, and helped translate family values into practical governance structures and decision-making frameworks.<span class="te"><b>Typical engagement</b><br>Working alongside principals, family members, and trusted advisors during periods of transition, growth, and increasing complexity.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Mergers, Acquisitions &amp; Commercial Due Diligence</h3><span class="plus">+</span></div><p class="tease">From target identification to integration — including factory floors in rural Africa.</p><div class="more">Supported family-owned businesses and investors throughout acquisition processes, from target identification and strategic assessment to operational due diligence and integration planning. We combine structured analysis with practical, on-the-ground investigation to understand how businesses truly operate — inspecting factory floors in rural Africa, not just data rooms.<span class="te"><b>Typical engagement</b><br>Moving beyond data rooms and presentations to evaluate leadership quality, operational realities, cultural fit, and execution risk.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Next-Generation Education &amp; Mentoring</h3><span class="plus">+</span></div><p class="tease">Personalised learning journeys for future stewards.</p><div class="more">Designed and delivered personalised learning journeys for next-generation family members — combining entrepreneurship, ownership education, governance, sustainability, and real-world exposure to help future stewards develop both competence and confidence.<span class="te"><b>Typical engagement</b><br>One-to-one mentoring, group learning experiences, field visits, and tailored educational programmes.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Compliance, ESG &amp; Stewardship Counsel</h3><span class="plus">+</span></div><p class="tease">Embedded governance, compliance and responsible-ownership advice.</p><div class="more">Served as an embedded advisor to family enterprises and operating businesses on governance, compliance, sustainability, and responsible ownership — helping organisations navigate increasing stakeholder expectations while strengthening long-term resilience and strategic clarity.<span class="te"><b>Typical engagement</b><br>Acting as a trusted advisor to leadership teams, boards, and owners during periods of regulatory change and organisational development.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Family Foundation Learning &amp; Educational Design</h3><span class="plus">+</span></div><p class="tease">Programmes, retreats and learning journeys for foundations and ownership groups.</p><div class="more">Designed educational programmes, retreats, workshops, and learning journeys for family foundations and ownership groups — translating complex topics such as stewardship, sustainability, governance, and societal change into engaging and meaningful learning experiences.<span class="te"><b>Typical engagement</b><br>Creating environments where families can learn, reflect, and develop shared perspectives together.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Innovation Labs &amp; Venture Building</h3><span class="plus">+</span></div><p class="tease">New ventures and innovation initiatives within family enterprises.</p><div class="more">Established and supported innovation initiatives within family-owned enterprises — helping organisations explore new ventures, business models, and growth opportunities beyond the core, while keeping initiatives anchored to family values and long-term intent.<span class="te"><b>Typical engagement</b><br>Standing up internal innovation efforts, shaping venture ideas, and guiding teams from concept toward execution.</span></div></div>
     </div>
     <p class="closing reveal">Calm. Decisive. Discreet.</p>
   </div>
@@ -236,7 +246,7 @@
 <script>
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>{nav.classList.toggle('solid',scrollY>60)});
-  document.querySelectorAll('#svc .card').forEach(c=>{
+  document.querySelectorAll('.svc-grid .card').forEach(c=>{
     if(c.querySelector('.more')) c.addEventListener('click',()=>c.classList.toggle('open'));
   });
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
