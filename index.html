@@ -41,7 +41,7 @@
 
   /* NAV */
   nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-      padding:20px clamp(24px,5vw,64px);transition:.3s}
+      padding:20px clamp(24px,5vw,64px);background:rgba(237,235,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav.solid{background:rgba(237,235,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav .mark{font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.02em}
   nav .navcta{font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--ink);
@@ -65,12 +65,12 @@
   /* PILLARS */
   .pillars{border-bottom:1px solid var(--line);background:var(--bone-2)}
   .pillars .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
-  .pill{padding:40px 28px 40px 0;border-right:1px solid var(--line)}
+  .pill{padding:40px 28px;border-right:1px solid var(--line)}
   .pill:last-child{border-right:0}
   .pill .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;color:var(--ochre);line-height:1}
   .pill h4{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;margin:12px 0 6px}
   .pill p{font-size:16px;color:var(--ink-soft);line-height:1.45}
-  @media(max-width:860px){.pillars .wrap{grid-template-columns:1fr 1fr}.pill{border-right:0;border-bottom:1px solid var(--line);padding-right:0}}
+  @media(max-width:860px){.pillars .wrap{grid-template-columns:1fr 1fr}.pill{border-right:0;border-bottom:1px solid var(--line);padding:40px 28px}}
 
   /* POSITIONING SPLIT */
   .split{padding:clamp(80px,11vw,150px) 0}
@@ -155,7 +155,7 @@
   <div class="hero-bg"></div>
   <div class="wrap">
     <span class="eyebrow" style="color:#cfc6b4">Family enterprise advisory · by referral</span>
-    <h1 class="display">We guide family and family enterprises.<br>And we move when it matters.</h1>
+    <h1 class="display">We guide families and family enterprises.<br>And we move when it matters.</h1>
     <p class="lede">Discreet, long-term guidance through strategy, governance, succession and legacy — with the ability to drop in, go anywhere, and bring back knowledge, truth and reality.</p>
     <div class="cta-row">
       <a class="btn btn-light" href="#contact">Begin a conversation</a>
@@ -244,8 +244,6 @@
 <footer><div style="padding-top:64px">You won't find us in many places. That's by design. Most of our work begins with a conversation, not a campaign. Quietly referred. Occasionally found. Known by few.</div></footer>
 
 <script>
-  const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>{nav.classList.toggle('solid',scrollY>60)});
   document.querySelectorAll('.svc-grid .card').forEach(c=>{
     if(c.querySelector('.more')) c.addEventListener('click',()=>c.classList.toggle('open'));
   });
