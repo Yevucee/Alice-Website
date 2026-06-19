@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Alice Ground Truth Method | Human-Led Field Research</title>
-<meta name="description" content="Discover Alice's proprietary approach to field research, human insight and strategic interpretation for complex investments, organisations and operating environments.">
+<title>Alice the Time Bender</title>
+<meta name="description" content="Discreet family enterprise advisory. Long-term guidance through strategy, governance, succession and legacy, based in Europe, working globally.">
+<link rel="canonical" href="https://yevucee.github.io/Alice-Website/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alice the Time Bender">
+<meta property="og:description" content="Discreet family enterprise advisory. Long-term guidance through strategy, governance, succession and legacy, based in Europe, working globally.">
+<meta property="og:url" content="https://yevucee.github.io/Alice-Website/">
+<meta property="og:image" content="https://picsum.photos/id/1018/1800/1100?grayscale">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alice the Time Bender">
+<meta name="twitter:description" content="Discreet family enterprise advisory. Long-term guidance through strategy, governance, succession and legacy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
@@ -12,6 +22,10 @@
   :root{
     --bone:#EDEBE7; --bone-2:#E4E1DB; --ink:#1A1A18; --ink-soft:#56544d;
     --black:#0b0b0a; --ochre:#B8923F; --line:rgba(26,26,24,.14);
+    /* Swap to assets/hero.jpg etc. when production photos are ready, see assets/README.md */
+    --img-hero:url('https://picsum.photos/id/1018/1800/1100?grayscale');
+    --img-band-a:url('https://picsum.photos/id/1015/1800/1000?grayscale');
+    --img-band-b:url('https://picsum.photos/id/1039/1800/1000?grayscale');
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -19,139 +33,109 @@
   .display{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:-.01em}
   .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,64px)}
   .eyebrow{font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft)}
-  .btn{display:inline-block;font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink);border:1px solid var(--ink);padding:16px 30px;border-radius:2px;transition:.25s}
+  .btn{display:inline-block;font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+       color:var(--ink);border:1px solid var(--ink);padding:16px 30px;border-radius:2px;transition:.25s}
   .btn:hover{background:var(--ink);color:var(--bone)}
   .btn-light{color:var(--bone);border-color:rgba(237,235,231,.5)}
   .btn-light:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
-  .link-arrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ochre);padding-bottom:3px}
-  .hero .link-arrow{color:#e6dfd1;border-color:var(--ochre)}
 
-  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(24px,5vw,64px);transition:.3s;color:#f4f0e8}
-  nav.solid{background:rgba(237,235,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);color:var(--ink)}
-  nav .mark{font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.02em;text-decoration:none;color:inherit}
-  nav .navcta{font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:inherit;border:1px solid currentColor;padding:9px 18px;border-radius:2px}
-
-  .sec-head{max-width:46ch;margin-bottom:54px}
-  .sec-head .eyebrow{margin-bottom:18px;display:block}
-  .sec-head h2{font-size:clamp(32px,5vw,58px)}
-  section{padding:clamp(80px,11vw,140px) 0}
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+      padding:20px clamp(24px,5vw,64px);background:rgba(237,235,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav.solid{background:rgba(237,235,231,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .mark{font-family:'Cormorant Garamond',serif;font-size:21px;letter-spacing:.02em}
+  nav .navcta{font-size:13px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--ink);
+              border:1px solid var(--ink);padding:9px 18px;border-radius:2px}
 
   /* HERO */
-  .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;color:#f4f0e8;padding:0}
+  .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;color:#f4f0e8}
   .hero-bg{position:absolute;inset:0;z-index:0;
-    background:
-      linear-gradient(90deg,rgba(8,7,6,.78) 0%,rgba(8,7,6,.38) 55%,rgba(20,14,6,.18) 100%),
-      linear-gradient(160deg,rgba(120,100,70,.30),rgba(30,24,14,.45)),
-      url('https://picsum.photos/id/1043/1800/1100?grayscale') center/cover no-repeat;
-    background-blend-mode:normal,multiply,normal;
-    filter:sepia(.32) contrast(1.02) brightness(.92)}
-  .hero .wrap{position:relative;z-index:2;padding-top:96px;padding-bottom:60px}
-  .hero h1{font-size:clamp(42px,6.6vw,96px);max-width:15ch;margin:22px 0 26px;text-wrap:balance}
-  .hero .lede{font-size:clamp(17px,1.9vw,22px);max-width:50ch;color:#e6dfd1;margin-bottom:24px;font-style:italic}
-  .hero .support{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#cfc6b4;margin-bottom:38px}
-  .hero .cta-row{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
-  .thread-hero{position:absolute;right:14%;top:0;height:100%;width:2px;z-index:1;opacity:.5}
+      background:
+        linear-gradient(90deg,rgba(8,7,6,.58) 0%,rgba(8,7,6,.22) 55%,rgba(20,14,6,.10) 100%),
+        linear-gradient(160deg,rgba(150,128,90,.28),rgba(40,32,18,.38)),
+        url('https://picsum.photos/id/1018/1800/1100?grayscale') center/cover no-repeat;
+      background-blend-mode:normal,multiply,normal;
+      filter:sepia(.20) contrast(1.01) brightness(1.18)}
+  .hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:60px}
+  .hero h1{font-size:clamp(40px,6.4vw,90px);margin:22px 0 26px;text-wrap:balance}
+  .hero h1 .hero-line{display:block}
+  .hero .lede{font-size:clamp(18px,2.1vw,24px);max-width:40ch;color:#e6dfd1;margin-bottom:40px;font-style:italic}
+  .hero .cta-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .hero .micro{font-size:13px;letter-spacing:.04em;color:#b8b0a0}
 
-  /* PROBLEM CONTRAST */
-  .contrast{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:40px}
-  .side{padding:48px 40px}
-  .side .kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;display:block;margin-bottom:18px}
-  .side p{font-size:clamp(20px,2.4vw,27px);font-family:'Cormorant Garamond',serif;line-height:1.3}
-  .presented{background:var(--bone-2)}
-  .presented .kicker{color:var(--ink-soft)}
-  .happening{background:#26211a;color:#ece5d6}
-  .happening .kicker{color:var(--ochre)}
-  .problem-body{max-width:64ch;color:var(--ink-soft)}
-  @media(max-width:760px){.contrast{grid-template-columns:1fr}}
+  /* PILLARS */
+  .pillars{border-bottom:1px solid var(--line);background:var(--bone-2)}
+  .pillars .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .pill{padding:40px 28px;border-right:1px solid var(--line)}
+  .pill:last-child{border-right:0}
+  .pill .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;color:var(--ochre);line-height:1}
+  .pill h4{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500;margin:12px 0 6px}
+  .pill p{font-size:16px;color:var(--ink-soft);line-height:1.45}
+  @media(max-width:860px){.pillars .wrap{grid-template-columns:1fr 1fr}.pill{border-right:0;border-bottom:1px solid var(--line);padding:40px 28px}}
 
-  /* METHOD INTRO */
-  .method{background:var(--bone-2);text-align:center}
-  .method .inner{max-width:760px;margin:0 auto}
-  .method .combine{margin:30px auto 0;max-width:60ch;color:var(--ink-soft)}
-  .feature{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,4.4vw,50px);line-height:1.12;margin:56px auto;max-width:18ch}
-  .protect{font-size:16px;color:var(--ink-soft);font-style:italic}
+  /* POSITIONING SPLIT */
+  .split{padding:clamp(80px,11vw,150px) 0}
+  .split .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+  .split h2{font-size:clamp(34px,5vw,64px);max-width:13ch}
+  .split .two{display:grid;gap:30px}
+  .split .two .row{display:flex;gap:18px;align-items:flex-start}
+  .split .two .row .dot{font-family:'Cormorant Garamond',serif;color:var(--ochre);font-size:30px;line-height:1}
+  .split .two .row h5{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;margin-bottom:4px}
+  .split .two .row p{font-size:17px;color:var(--ink-soft)}
+  @media(max-width:820px){.split .wrap{grid-template-columns:1fr;gap:40px}}
 
-  /* JOURNEY */
-  .journey-wrap{position:relative}
-  .thread-journey{position:absolute;left:18px;top:0;height:100%;width:2px}
-  .journey{list-style:none;position:relative;padding-left:64px}
-  .stage{position:relative;padding:26px 0 46px}
-  .stage:last-child{padding-bottom:0}
-  .stage .num{position:absolute;left:-64px;top:24px;width:38px;height:38px;border-radius:50%;background:var(--bone);border:1px solid var(--ochre);color:var(--ochre);font-family:'Cormorant Garamond',serif;font-size:18px;display:flex;align-items:center;justify-content:center}
-  .stage h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);margin-bottom:8px}
-  .stage p{color:var(--ink-soft);max-width:60ch}
-  @media(max-width:620px){.journey{padding-left:46px}.stage .num{left:-46px;width:30px;height:30px;font-size:15px}.thread-journey{left:14px}}
+  /* IMAGE BAND */
+  .band{height:64vh;min-height:380px;position:relative;display:flex;align-items:flex-end;background-size:cover;background-position:center}
+  .band .cap{position:relative;z-index:2;color:#efe9df;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:22px clamp(24px,5vw,64px);opacity:.7}
+  .band-a{
+      background:
+        linear-gradient(180deg,rgba(40,30,18,.12),rgba(28,20,10,.55)),
+        linear-gradient(160deg,rgba(120,98,60,.45),rgba(36,26,16,.45)),
+        var(--img-band-a) center/cover no-repeat;
+      background-blend-mode:normal,multiply,normal;
+      filter:sepia(.4) contrast(1.02) brightness(.95)}
+  .band-b{
+      background:
+        linear-gradient(90deg,rgba(18,14,10,.72),rgba(18,14,10,.30)),
+        linear-gradient(160deg,rgba(110,90,55,.4),rgba(20,15,9,.55)),
+        var(--img-band-b) center/cover no-repeat;
+      background-blend-mode:normal,multiply,normal;
+      filter:sepia(.4) contrast(1.02) brightness(.9)}
 
-  /* CAPABILITIES */
-  .caps{background:var(--bone-2)}
-  .cap{border-top:1px solid var(--line);padding:28px 0;cursor:pointer}
-  .cap:last-of-type{border-bottom:1px solid var(--line)}
-  .cap .top{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
-  .cap h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(23px,2.8vw,32px)}
-  .cap .plus{color:var(--ochre);font-family:'Cormorant Garamond',serif;font-size:26px;transition:transform .3s}
-  .cap.open .plus{transform:rotate(45deg)}
-  .cap .lead{color:var(--ink-soft);margin-top:6px;max-width:70ch}
-  .cap .more{max-height:0;overflow:hidden;transition:max-height .45s ease,margin .45s ease;color:var(--ink);font-style:italic;max-width:70ch}
-  .cap.open .more{max-height:160px;margin-top:12px}
-  .fieldnote{margin:56px 0 0;padding:6px 0 6px 28px;border-left:2px solid var(--ochre);max-width:64ch}
-  .fieldnote .eyebrow{display:block;margin-bottom:12px}
-  .fieldnote p{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.8vw,32px);line-height:1.28;font-style:italic;color:var(--ink)}
-  .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:72px}
-  .theme{background:var(--bone-2);padding:30px 26px}
-  .theme h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:23px;color:var(--ochre);margin-bottom:8px}
-  .theme p{font-size:16px;color:var(--ink-soft);line-height:1.45}
-  @media(max-width:760px){.themes{grid-template-columns:1fr 1fr}}
+  /* SERVICES */
+  .services{padding:clamp(80px,11vw,140px) 0}
+  .sec-head{max-width:46ch;margin-bottom:54px}
+  .sec-head .eyebrow{margin-bottom:18px;display:block}
+  .sec-head h2{font-size:clamp(34px,5vw,60px)}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
+  .card{background:var(--bone);padding:34px 32px;cursor:pointer;transition:background .25s}
+  .card:hover{background:var(--bone-2)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+  .card h3{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.6vw,31px);font-weight:500;line-height:1.1}
+  .card .plus{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--ochre);transition:transform .3s;line-height:1}
+  .card.open .plus{transform:rotate(45deg)}
+  .card .tease{color:var(--ink-soft);font-size:16.5px;margin-top:8px}
+  .card .more{max-height:0;overflow:hidden;transition:max-height .4s ease,margin .4s ease;color:var(--ink-soft);font-size:16.5px}
+  .card.open .more{max-height:520px;margin-top:14px}
+  .card .more .te{display:block;margin-top:12px;font-style:italic;color:var(--ink)}
+  .card .more .te b{font-style:normal;letter-spacing:.04em;font-size:13px;text-transform:uppercase;color:var(--ochre)}
 
-  /* BAND */
-  .band{height:60vh;min-height:360px;position:relative;display:flex;align-items:flex-end;
-    background:linear-gradient(180deg,rgba(40,30,18,.12),rgba(28,20,10,.5)),linear-gradient(160deg,rgba(120,98,60,.4),rgba(36,26,16,.4)),url('https://picsum.photos/id/1056/1800/1000?grayscale') center/cover no-repeat;
-    background-blend-mode:normal,multiply,normal;filter:sepia(.4) contrast(1.02) brightness(.95)}
-  .band .cap-line{position:relative;z-index:2;color:#efe9df;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:22px clamp(24px,5vw,64px);opacity:.78}
+  /* HOW */
+  .how{background:var(--bone-2);padding:clamp(80px,11vw,140px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .how .sec-head{margin-bottom:46px}
+  .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,56px)}
+  @media(max-width:820px){.how-grid{grid-template-columns:1fr}}
+  .how-grid .n{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--ochre);line-height:1}
+  .how-grid h4{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin:14px 0 8px}
+  .how-grid p{font-size:17px;color:var(--ink-soft)}
+  .how .closing{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,3vw,34px);margin-top:64px;text-align:center}
 
-  /* TEAM */
-  .team-section{padding-bottom:0}
-  .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start;margin-bottom:0}
-  .person .portrait{width:100%;max-width:300px;aspect-ratio:4/5;background-size:cover;background-position:center top;filter:sepia(.12) contrast(1.01);border-radius:2px;margin-bottom:24px}
-  .person .role{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre);margin:6px 0 16px;display:block;min-height:2.4em}
-  .person h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px)}
-  .person p{color:var(--ink-soft);font-size:17px}
-  .converge{text-align:center;margin-top:36px}
-  .converge svg{display:block;width:100%;max-width:520px;height:auto;margin:0 auto -4px}
-  .converge .node{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.4vw,26px);border:1px solid var(--ochre);color:var(--ink);border-radius:2px;padding:14px 28px;background:var(--bone)}
-  .bridge{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(26px,4vw,46px);line-height:1.15;margin:60px auto 40px;max-width:20ch;text-align:center}
-  .thread-down{display:block;width:2px;height:96px;background:var(--ochre);opacity:.55;margin:0 auto}
-  @media(max-width:760px){.team-grid{grid-template-columns:1fr;gap:48px}.converge svg{display:none}.person .portrait{max-width:380px}.person .role{min-height:0}.thread-down{height:64px}}
-
-  /* SCENARIOS */
-  .scen{background:var(--bone-2)}
-  .scen-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(40px,6vw,90px)}
-  .scenario{border-top:1px solid var(--line);padding:26px 0}
-  .scenario h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,2.6vw,29px);margin-bottom:6px}
-  .scenario p{color:var(--ink-soft);font-size:16.5px;max-width:46ch}
-  @media(max-width:760px){.scen-grid{grid-template-columns:1fr}}
-
-  /* RECEIVE */
-  .receive-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
-  .signals svg{width:100%;height:auto}
-  .receive-list{list-style:none}
-  .receive-list li{padding:12px 0;border-bottom:1px solid var(--line);font-size:17px}
-  .receive-list li:first-child{border-top:1px solid var(--line)}
-  .receive-body{max-width:64ch;color:var(--ink-soft);margin-top:36px}
-  @media(max-width:760px){.receive-grid{grid-template-columns:1fr;gap:30px}}
-
-  /* PRINCIPLES (light) */
-  .principles{background:var(--bone-2);border-top:1px solid var(--line)}
-  .pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);margin-top:10px}
-  .pr-grid h4{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;color:var(--ink);margin-bottom:16px}
-  .pr-grid .item{padding:10px 0;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:17px}
-  .pr-close{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,3vw,32px);color:var(--ink);margin-top:56px;text-align:center}
-  @media(max-width:760px){.pr-grid{grid-template-columns:1fr;gap:36px}}
-
-  /* CLOSING */
-  .closing{background:var(--black);color:#f2efe8;text-align:center;border-top:1px solid rgba(255,255,255,.08)}
-  .closing h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,6vw,76px);margin-bottom:24px}
-  .closing p{max-width:52ch;margin:0 auto 36px;color:#d8d3c8}
-  .closing .opt{margin-top:34px;font-size:14px;color:#8d877c}
+  /* CONTACT */
+  .contact{background:var(--black);color:#f2efe8;padding:clamp(90px,13vw,170px) 0;text-align:center}
+  .contact h2{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,7vw,92px);font-weight:500;margin-bottom:26px}
+  .contact p{max-width:48ch;margin:0 auto 36px;color:#d8d3c8}
+  .contact .meta{margin-top:40px;font-size:15px;color:#8d877c;letter-spacing:.02em;line-height:1.8}
   footer{background:var(--black);color:#6c675d;text-align:center;padding:0 clamp(24px,5vw,64px) 80px;font-style:italic;font-size:15px}
   footer div{max-width:64ch;margin:0 auto}
 
@@ -163,250 +147,114 @@
 <body>
 
 <nav id="nav">
-  <a class="mark" href="../">Alice the Time Bender</a>
-  <a class="navcta" href="../#contact">Begin a conversation</a>
+  <div class="mark">Alice the Time Bender</div>
+  <a class="navcta" href="#contact">Begin a conversation</a>
 </nav>
 
-<!-- 1. HERO -->
+<!-- HERO: 5-second clarity + single CTA -->
 <header class="hero">
   <div class="hero-bg"></div>
   <div class="wrap">
-    <span class="eyebrow" style="color:#cfc6b4">The Alice Ground Truth Method</span>
-    <h1 class="display">We go beyond the report</h1>
-    <p class="lede">Alice combines field research, human insight and senior strategic judgement to understand what is actually happening inside organisations, investments and operating environments. We see past the formal presentation to the relationships, behaviours and hidden dynamics that shape real outcomes.</p>
-    <p class="support">Human-led. Ground-level. Strategically useful.</p>
+    <span class="eyebrow" style="color:#f0ebe3">Family enterprise advisory</span>
+    <h1 class="display">We guide families and family enterprises.<br>And we move when it matters.</h1>
+    <p class="lede">Discreet, long-term guidance through strategy, governance, succession and legacy, with the ability to drop in, go anywhere, and bring back knowledge, truth and reality.</p>
     <div class="cta-row">
-      <a class="btn btn-light" href="../#contact">Discuss a situation</a>
-      <a class="link-arrow" href="#method">Explore the method ↓</a>
+      <a class="btn btn-light" href="#contact">Begin a conversation</a>
+      <span class="micro">Based in Europe · Working globally</span>
     </div>
   </div>
 </header>
 
-<!-- 2. PROBLEM -->
-<section>
+<!-- PILLARS: trust signals, instantly scannable -->
+<section class="pillars">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">The gap</span><h2 class="display">Important decisions are often made using incomplete realities</h2></div>
-    <div class="contrast reveal">
-      <div class="side presented"><span class="kicker">What is presented</span><p>Reports, structures, policies, interviews and formal narratives.</p></div>
-      <div class="side happening"><span class="kicker">What may be happening</span><p>Relationships, behaviours, informal influence, local pressures and contradictions.</p></div>
-    </div>
-    <p class="problem-body reveal">Traditional research can tell you what is documented, reported or formally presented. It may not reveal how decisions are really made, who holds influence without formal authority, where official accounts differ from lived reality, how people behave outside formal meetings, which tensions are visible locally but absent from reports, or whether a strategy, investment or organisation works as described. Alice closes this gap by combining structured research with direct human exposure and experienced interpretation.</p>
+    <div class="pill reveal"><div class="n">01</div><h4>Discreet by design</h4><p>Quietly referred, rarely found. Confidentiality is the foundation.</p></div>
+    <div class="pill reveal"><div class="n">02</div><h4>Long-term stewards</h4><p>A few families at a time, for years, across generations.</p></div>
+    <div class="pill reveal"><div class="n">03</div><h4>On the ground in days</h4><p>When it counts, we travel, embed and act, fast.</p></div>
+    <div class="pill reveal"><div class="n">04</div><h4>Hands on, human</h4><p>People help us understand reality. We go and see for ourselves.</p></div>
+    <div class="pill reveal"><div class="n">05</div><h4>Cutting-edge<br>technology</h4><p>Technology helps us process information and move faster when it matters.</p></div>
   </div>
 </section>
 
-<!-- 3. METHOD -->
-<section class="method" id="method">
-  <div class="wrap inner reveal">
-    <span class="eyebrow">The method</span>
-    <h2 class="display" style="font-size:clamp(32px,5vw,58px);margin-top:16px">The Alice Ground Truth Method</h2>
-    <p class="combine">The Alice Ground Truth Method is our proprietary approach to understanding complex environments through people, relationships, observation and strategic interpretation. It combines structured research, network-led field movement, natural human-first conversation, direct observation, stakeholder and influence mapping, continuous testing of assumptions, and senior-level synthesis. We do not rely on one interview, one source or one official narrative. We build understanding progressively, moving across networks, comparing perspectives and observing how systems behave in practice.</p>
-    <p class="feature display">We do not only research an environment. We gradually become present within it.</p>
-    <p class="protect">The sequence and the internal frameworks for access, observation, verification and interpretation are proprietary to Alice.</p>
-  </div>
-</section>
-
-<!-- 4. JOURNEY -->
-<section>
+<!-- POSITIONING: the two truths, fast to grasp -->
+<section class="split">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">The sequence</span><h2 class="display">How the method works</h2></div>
-    <div class="journey-wrap">
-      <svg class="thread-journey" id="thread" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true"><path id="threadPath" d="M1 0 L1 100" stroke="#B8923F" stroke-width="2" fill="none" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/></svg>
-      <ol class="journey">
-        <li class="stage reveal"><span class="num">01</span><h3>Orient</h3><p>We begin with the decision behind the assignment, and identify what is known, what is assumed, what is missing and what needs closer attention.</p></li>
-        <li class="stage reveal"><span class="num">02</span><h3>Enter</h3><p>We enter the environment through people, relationships and credible local access, creating the conditions for genuine contact and observation rather than a rigid sequence of formal interviews.</p></li>
-        <li class="stage reveal"><span class="num">03</span><h3>Move</h3><p>One conversation leads to another. We move across stakeholder groups, organisations, social settings and informal networks, building a broader picture of the environment.</p></li>
-        <li class="stage reveal"><span class="num">04</span><h3>Test</h3><p>We compare what people say, what others say, what we observe and what the records show, and we test emerging conclusions continuously rather than accepting them too early.</p></li>
-        <li class="stage reveal"><span class="num">05</span><h3>Interpret</h3><p>We translate fragmented information into clear judgement, explaining the patterns, relationships, risks and implications that matter to the decision.</p></li>
-      </ol>
+    <h2 class="display reveal">Calm in the long term. Decisive when it counts.</h2>
+    <div class="two reveal">
+      <div class="row"><div><h5>We hold space</h5><p>For the conversations that shape continuity.</p></div></div>
+      <div class="row"><div><h5>We bend time</h5><p>We help find and bring valuable legacy into the future.</p></div></div>
+      <div class="row"><div><h5>We bring reality</h5><p>No nonsense, with heart. Knowledge and truth, from the ground level.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- 5. CAPABILITIES -->
-<section class="caps">
+<div class="band band-a reveal"><span class="cap">Stewarding what should endure</span></div>
+
+<!-- SERVICES: scannable grid, depth on click (progressive disclosure) -->
+<section class="services">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">Why it is different</span><h2 class="display">Research built around human reality</h2></div>
-    <div id="capList">
-      <div class="cap"><div class="top"><h3>Human-first engagement</h3><span class="plus">+</span></div><p class="lead">We create conversations in which people speak naturally, which often reveals more than rigid or formal questioning.</p><div class="more">In practice, this means meeting people where they are comfortable, and listening for what is said in passing as much as what is said on the record.</div></div>
-      <div class="cap"><div class="top"><h3>Network-led access</h3><span class="plus">+</span></div><p class="lead">Our work develops through relationships and introductions, reaching people and perspectives that rarely appear on a conventional stakeholder list.</p><div class="more">Access is earned, not requested. One trusted introduction opens the next, and the map of who matters grows from the inside.</div></div>
-      <div class="cap"><div class="top"><h3>Social agility</h3><span class="plus">+</span></div><p class="lead">We move comfortably between senior leadership, employees, advisers, operational teams, local communities and informal networks.</p><div class="more">The same situation looks different from the boardroom and the factory floor. We spend time in both.</div></div>
-      <div class="cap"><div class="top"><h3>Observation beyond the meeting room</h3><span class="plus">+</span></div><p class="lead">We attend to behaviour, routines, surroundings, language and the details that are easily overlooked.</p><div class="more">How a place is run is often written in its habits long before it appears in its reports.</div></div>
-      <div class="cap"><div class="top"><h3>Multiple perspectives</h3><span class="plus">+</span></div><p class="lead">No single account is treated as definitive. We compare perspectives and find where experiences, interests and narratives align or diverge.</p><div class="more">Where accounts diverge is often where the most useful understanding begins.</div></div>
-      <div class="cap"><div class="top"><h3>Strategic interpretation</h3><span class="plus">+</span></div><p class="lead">Field insight matters when it is connected to the client's decision. We turn observation into structured judgement, not description.</p><div class="more">The question is never only what is happening, but what it means for the choice in front of you.</div></div>
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2 class="display">Calm guidance, decisive support.</h2>
     </div>
-    <div class="fieldnote reveal">
-      <span class="eyebrow">What we notice</span>
-      <p>A founder who is never interrupted. A policy everyone praises but no one can quite locate. A supplier who is always paid first. The detail that explains a system is rarely the detail in the report.</p>
+    <div class="svc-grid reveal" id="svc">
+      <div class="card"><div class="top"><h3>Strategy &amp; Governance</h3><span class="plus">+</span></div><p class="tease">Defining direction and governance models around your family's dynamics.</p><div class="more">We lead structured, thoughtful conversations that define strategic direction and governance models, each one shaped around the unique dynamics of the family and its enterprise.</div></div>
+      <div class="card"><div class="top"><h3>Mergers &amp; Acquisitions</h3><span class="plus">+</span></div><p class="tease">Well-tested models with deep, on-the-ground involvement.</p><div class="more">Technology helps us process information; people help us understand reality. We spend our time where value and risk are created, inside operations, close to the people shaping the business. When a deal needs assessing at short notice, we move.</div></div>
+      <div class="card"><div class="top"><h3>Succession &amp; Legacy</h3><span class="plus">+</span></div><p class="tease">Navigating transitions and generational shifts.</p><div class="more">We support families through leadership transitions, succession and generational shifts, aligning future intentions with present responsibilities.</div></div>
+      <div class="card"><div class="top"><h3>Compliance &amp; Structure</h3><span class="plus">+</span></div><p class="tease">Frameworks for alignment, clarity and resilience.</p><div class="more">We shape governance frameworks that support regulatory alignment, internal clarity and long-term resilience.</div></div>
+      <div class="card"><div class="top"><h3>Family Office &amp; Investment</h3><span class="plus">+</span></div><p class="tease">Structures for thoughtful oversight of shared assets.</p><div class="more">We help design structures for family offices and holdings, supporting thoughtful oversight of portfolios and shared assets.</div></div>
+      <div class="card"><div class="top"><h3>Reputational Risk</h3><span class="plus">+</span></div><p class="tease">Discreet due diligence on exposure and core assets.</p><div class="more">We help families understand where they are exposed, from public perception to internal dynamics and across the supply chain. In moments of uncertainty, transition or expansion, we run calm, discreet due diligence. When something looks wrong, we go and see for ourselves.</div></div>
+      <div class="card"><div class="top"><h3>Embedded Stewardship</h3><span class="plus">+</span></div><p class="tease">We embed within the assets to strengthen them from inside.</p><div class="more">When it's wanted, we embed into internal roles and conversations to strengthen the living system from the inside out. We coach, we align, we translate intent into execution, and we stay for as long as we're useful.</div></div>
+      <div class="card"><div class="top"><h3>Executive Coaching</h3><span class="plus">+</span></div><p class="tease">One-to-one coaching for principals and senior business leaders.</p><div class="more">We coach principals, owners and senior executives through complexity, transition and high-stakes decisions, building clarity, confidence and steadiness at the top. Candid, confidential, and grounded in the realities of leading a family enterprise.</div></div>
     </div>
-    <div class="themes reveal">
-      <div class="theme"><h4>People</h4><p>Influence, relationships, behaviour and reputation.</p></div>
-      <div class="theme"><h4>Organisation</h4><p>Culture, governance, leadership and accountability.</p></div>
-      <div class="theme"><h4>Operations</h4><p>Reality on the ground, dependencies and the gap between policy and practice.</p></div>
-      <div class="theme"><h4>Context</h4><p>Local sentiment, social exposure, environmental conditions and external pressures.</p></div>
-    </div>
+    <div style="text-align:center;margin-top:48px"><p style="font-family:'Cormorant Garamond',serif;font-size:24px;margin-bottom:18px">Not sure where to start?</p><a class="btn" href="#contact">Begin a conversation</a></div>
   </div>
 </section>
 
-<!-- 6. TEAM -->
-<section class="team-section">
+<div class="band band-b reveal"><span class="cap">On the ground, where value and risk are made</span></div>
+
+<section class="how">
   <div class="wrap">
-    <div class="sec-head reveal" style="max-width:none"><span class="eyebrow">The team</span><h2 class="display">Field understanding. Senior judgement.</h2></div>
-    <p class="reveal" style="max-width:64ch;color:var(--ink-soft);margin-bottom:56px">The strength of Alice lies in the combination of two complementary capabilities. We connect what is happening on the ground with what it means for leadership, ownership, governance and the organisation.</p>
-    <div class="team-grid reveal">
-      <div class="person">
-        <!-- SAMUEL PORTRAIT: save the treated portrait as images/samuel.png next to this file -->
-        <div class="portrait" style="background-image:url('images/samuel.png')"></div>
-        <h3>Samuel</h3>
-        <span class="role">Field research and ground-level insight</span>
-        <p>Samuel leads Alice's human-first field research. His work combines rapid integration into unfamiliar environments, relationship-led access, natural and non-confrontational conversation, cross-cultural communication, direct observation, and stakeholder and influence mapping. His approach is informed by anthropological thinking and extensive international experience. He does not enter an environment simply to conduct interviews. He listens, observes, follows relationships and gradually develops a grounded understanding of how the environment works.</p>
-      </div>
-      <div class="person">
-        <!-- RASMUS PORTRAIT: save the treated portrait as images/rasmus.png next to this file -->
-        <div class="portrait" style="background-image:url('images/rasmus.png')"></div>
-        <h3>Rasmus</h3>
-        <span class="role">Strategic, organisational and leadership expertise</span>
-        <p>Rasmus brings the senior perspective needed to understand what the findings mean for an organisation, owner or decision-maker. His expertise spans organisational dynamics, leadership and executive decision-making, governance and accountability, sustainability and compliance, family-owned and owner-led organisations, succession and legacy, and reputational and strategic exposure. He connects field findings to the wider organisational, governance and strategic context, and turns complex material into practical executive judgement.</p>
-      </div>
+    <div class="sec-head reveal"><span class="eyebrow">How we have worked</span><h2 class="display">A track record, quietly built.</h2></div>
+    <div class="svc-grid reveal" id="cases">
+      <div class="card"><div class="top"><h3>Family Strategy &amp; Generational Transition</h3><span class="plus">+</span></div><p class="tease">Succession, ownership transitions and long-term stewardship across generations.</p><div class="more">Supported a multi-generational family in navigating succession, ownership transitions, and long-term stewardship. Facilitated conversations across generations, aligned expectations around future roles and responsibilities, and helped translate family values into practical governance structures and decision-making frameworks.<span class="te"><b>Typical engagement</b><br>Working alongside principals, family members, and trusted advisors during periods of transition, growth, and increasing complexity.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Mergers, Acquisitions &amp; Commercial Due Diligence</h3><span class="plus">+</span></div><p class="tease">From target identification to integration, including factory floors in rural Africa.</p><div class="more">Supported family-owned businesses and investors throughout acquisition processes, from target identification and strategic assessment to operational due diligence and integration planning. We combine structured analysis with practical, on-the-ground investigation to understand how businesses truly operate, inspecting factory floors in rural Africa, not just data rooms.<span class="te"><b>Typical engagement</b><br>Moving beyond data rooms and presentations to evaluate leadership quality, operational realities, cultural fit, and execution risk.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Next-Generation Education &amp; Mentoring</h3><span class="plus">+</span></div><p class="tease">Personalised learning journeys for future stewards.</p><div class="more">Designed and delivered personalised learning journeys for next-generation family members, combining entrepreneurship, ownership education, governance, sustainability, and real-world exposure to help future stewards develop both competence and confidence.<span class="te"><b>Typical engagement</b><br>One-to-one mentoring, group learning experiences, field visits, and tailored educational programmes.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Executive Coaching of Principals &amp; Leaders</h3><span class="plus">+</span></div><p class="tease">One-to-one coaching for principals and senior business leaders.</p><div class="more">Coached principals, owners and senior executives through complexity, transition and high-stakes decisions, building clarity, confidence and steadiness at the top. Candid and confidential, grounded in the realities of leading a family enterprise.<span class="te"><b>Typical engagement</b><br>Ongoing one-to-one counsel to leaders and owners during periods of pressure, change, and consequential decision-making.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Compliance, ESG &amp; Stewardship Counsel</h3><span class="plus">+</span></div><p class="tease">Embedded governance, compliance and responsible-ownership advice.</p><div class="more">Served as an embedded advisor to family enterprises and operating businesses on governance, compliance, sustainability, and responsible ownership, helping organisations navigate increasing stakeholder expectations while strengthening long-term resilience and strategic clarity.<span class="te"><b>Typical engagement</b><br>Acting as a trusted advisor to leadership teams, boards, and owners during periods of regulatory change and organisational development.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Family Foundation Learning &amp; Educational Design</h3><span class="plus">+</span></div><p class="tease">Programmes, retreats and learning journeys for foundations and ownership groups.</p><div class="more">Designed educational programmes, retreats, workshops, and learning journeys for family foundations and ownership groups, translating complex topics such as stewardship, sustainability, governance, and societal change into engaging and meaningful learning experiences.<span class="te"><b>Typical engagement</b><br>Creating environments where families can learn, reflect, and develop shared perspectives together.</span></div></div>
+
+      <div class="card"><div class="top"><h3>Innovation Labs &amp; Venture Building</h3><span class="plus">+</span></div><p class="tease">New ventures and innovation initiatives within family enterprises.</p><div class="more">Established and supported innovation initiatives within family-owned enterprises, helping organisations explore new ventures, business models, and growth opportunities beyond the core, while keeping initiatives anchored to family values and long-term intent.<span class="te"><b>Typical engagement</b><br>Standing up internal innovation efforts, shaping venture ideas, and guiding teams from concept toward execution.</span></div></div>
+
+      <div class="card" style="display:flex;align-items:center;justify-content:center;background:var(--bone-2);cursor:default"><div style="text-align:center;padding:0 16px"><p style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.25;margin-bottom:12px">Every engagement is bespoke.</p><p style="color:var(--ink-soft);font-size:17px;line-height:1.5">We measure success in generations, not quarters.</p></div></div>
     </div>
-    <div class="converge reveal">
-      <svg viewBox="0 0 400 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <circle cx="44" cy="10" r="3.5" fill="#B8923F"/>
-        <circle cx="356" cy="10" r="3.5" fill="#B8923F"/>
-        <path d="M44 12 C 130 62, 168 66, 200 70" stroke="#B8923F" stroke-width="1.4" fill="none"/>
-        <path d="M356 12 C 270 62, 232 66, 200 70" stroke="#B8923F" stroke-width="1.4" fill="none"/>
-        <circle cx="200" cy="71" r="4.5" fill="#B8923F"/>
-      </svg>
-      <span class="node">What it means for the decision</span>
-    </div>
-    <p class="bridge display reveal">Samuel gets close enough to understand the reality. Rasmus helps determine what that reality means.</p>
-    <div class="thread-down" aria-hidden="true"></div>
+    <p class="closing reveal">Calm. Decisive. Discreet.</p>
   </div>
 </section>
 
-<div class="band reveal"><span class="cap-line">On the ground, where understanding is built</span></div>
-
-<!-- 7. SCENARIOS -->
-<section class="scen">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">Where it is used</span><h2 class="display">Designed for decisions where context matters</h2></div>
-    <div class="scen-grid reveal">
-      <div class="scenario"><h4>Before investing</h4><p>Understanding the people, operating reality, local reputation and hidden dependencies surrounding an investment, acquisition or partnership.</p></div>
-      <div class="scenario"><h4>Within a family business or office</h4><p>Exploring governance, relationships, succession, informal power and the alignment between ownership intention and organisational reality.</p></div>
-      <div class="scenario"><h4>Before entering a market</h4><p>Building a grounded understanding of how an unfamiliar environment operates, beyond published market information.</p></div>
-      <div class="scenario"><h4>When reputation is at stake</h4><p>Identifying behaviours, relationships, contradictions or local perceptions that may create future exposure.</p></div>
-      <div class="scenario"><h4>During organisational change</h4><p>Understanding how leadership decisions are interpreted and experienced across an organisation.</p></div>
-      <div class="scenario"><h4>When commitments must be real</h4><p>Testing whether stated commitments on sustainability or compliance are reflected in everyday practice, incentives and relationships.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. RECEIVE -->
-<section>
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow">What you receive</span><h2 class="display">From scattered information to clear judgement</h2></div>
-    <div class="receive-grid reveal">
-      <div class="signals">
-        <svg viewBox="0 0 270 200" aria-hidden="true">
-          <g fill="#56544d">
-            <circle cx="16" cy="34" r="3"/><circle cx="54" cy="16" r="2.5"/><circle cx="40" cy="74" r="2"/><circle cx="12" cy="112" r="2.5"/><circle cx="70" cy="104" r="3"/><circle cx="36" cy="152" r="2"/><circle cx="78" cy="176" r="2.5"/><circle cx="22" cy="188" r="2"/>
-          </g>
-          <g stroke="#B8923F" stroke-width="1" fill="none" opacity="0.65">
-            <path d="M16 34 L110 100"/><path d="M54 16 L110 100"/><path d="M40 74 L110 100"/><path d="M12 112 L110 100"/><path d="M70 104 L110 100"/><path d="M36 152 L110 100"/><path d="M78 176 L110 100"/><path d="M22 188 L110 100"/>
-          </g>
-          <circle cx="110" cy="100" r="5" fill="#B8923F"/>
-          <path d="M110 100 L150 100" stroke="#B8923F" stroke-width="1" fill="none" opacity="0.65"/>
-          <rect x="150" y="56" width="104" height="92" rx="3" fill="none" stroke="#1A1A18" stroke-width="1.2"/>
-          <g fill="#1A1A18" opacity="0.85">
-            <rect x="164" y="74" width="60" height="3" rx="1.5"/>
-            <rect x="164" y="88" width="76" height="3" rx="1.5"/>
-            <rect x="164" y="102" width="50" height="3" rx="1.5"/>
-            <rect x="164" y="116" width="72" height="3" rx="1.5"/>
-            <rect x="164" y="130" width="42" height="3" rx="1.5"/>
-          </g>
-        </svg>
-      </div>
-      <div>
-        <ul class="receive-list">
-          <li>An executive ground-truth assessment</li>
-          <li>Stakeholder and influence maps</li>
-          <li>Key findings and emerging patterns</li>
-          <li>The contradictions and information gaps we found</li>
-          <li>A view of reputational and organisational exposure</li>
-          <li>Selected field observations</li>
-          <li>The strategic questions leadership should consider</li>
-          <li>A clear sense of where to proceed, where to pause and where to look harder</li>
-        </ul>
-      </div>
-    </div>
-    <p class="receive-body reveal">You do not receive a collection of disconnected observations. Alice brings the evidence together into a concise, decision-led view of what matters, why it matters and where further attention may be required.</p>
-  </div>
-</section>
-
-<!-- 9. PRINCIPLES -->
-<section class="principles">
-  <div class="wrap">
-    <div class="sec-head reveal" style="max-width:none"><span class="eyebrow">How we work</span><h2 class="display">Careful, proportionate, discreet</h2></div>
-    <div class="pr-grid reveal">
-      <div>
-        <h4>Not a conventional site visit</h4>
-        <div class="item">Not a pre-arranged sequence of corporate interviews</div>
-        <div class="item">Not a compliance checklist or survey exercise</div>
-        <div class="item">Not a generic market report</div>
-        <div class="item">Not a short visit to confirm an existing view</div>
-        <div class="item">Not an attempt to produce false certainty</div>
-      </div>
-      <div>
-        <h4>What guides us</h4>
-        <div class="item">Confidentiality and proportionality</div>
-        <div class="item">Respect for people and context</div>
-        <div class="item">Evidence-led judgement</div>
-        <div class="item">A clear separation between observation and conclusion</div>
-        <div class="item">Honesty about uncertainty and information gaps</div>
-      </div>
-    </div>
-    <p class="pr-close display reveal">We do not overstate what the evidence can support.</p>
-  </div>
-</section>
-
-<!-- 10. CLOSING -->
-<section class="closing">
+<!-- CONTACT -->
+<section class="contact" id="contact">
   <div class="wrap reveal">
-    <h2>See what the formal picture leaves out</h2>
-    <p>When the quality of a decision depends on understanding people, relationships and operating reality, conventional research may not be enough. Alice provides the human context behind the information, and the judgement required to use it.</p>
-    <a class="btn btn-light" href="../#contact">Discuss a situation</a>
-    <p class="opt">The Ground Truth Method underpins several of Alice's services.</p>
+    <h2>Let's begin a conversation.</h2>
+    <p>We value the relationships we've built over time, and we're always open to new ones where there's mutual curiosity.</p>
+    <a class="btn btn-light" href="mailto:hello@alicethetimebender.com">hello@alicethetimebender.com</a>
+    <div class="meta">Based in Europe. Working globally. On the ground wherever needed.<br>References available upon request.</div>
   </div>
 </section>
 
 <footer><div style="padding-top:64px">You won't find us in many places. That's by design. Most of our work begins with a conversation, not a campaign. Quietly referred. Occasionally found. Known by few.</div></footer>
 
 <script>
-  const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>{nav.classList.toggle('solid',scrollY>60)});
-
-  document.querySelectorAll('#capList .cap').forEach(c=>{
-    c.addEventListener('click',()=>c.classList.toggle('open'));
+  document.querySelectorAll('.svc-grid .card').forEach(c=>{
+    if(c.querySelector('.more')) c.addEventListener('click',()=>c.classList.toggle('open'));
   });
-
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const threadPath=document.getElementById('threadPath');
-  const threadWrap=document.querySelector('.journey-wrap');
-  if(threadPath&&threadWrap){
-    if(reduce){threadPath.style.strokeDashoffset=0;}
-    else{
-      const draw=()=>{
-        const r=threadWrap.getBoundingClientRect();
-        const vh=innerHeight;
-        const total=r.height+vh*0.4;
-        const p=Math.min(1,Math.max(0,(vh*0.7-r.top)/total));
-        threadPath.style.strokeDashoffset=String(100-100*p);
-      };
-      addEventListener('scroll',draw,{passive:true});addEventListener('resize',draw);draw();
-    }
-  }
 </script>
 </body>
 </html>
