@@ -27,10 +27,16 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Exclude in-progress pages from the live site (remove exclude when ready to publish)
+      - name: Prepare site
+        run: |
+          mkdir _site
+          rsync -a --exclude='ground-truth-method' --exclude='.git' --exclude='_site' ./ _site/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
