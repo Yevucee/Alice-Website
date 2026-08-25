@@ -1,0 +1,14 @@
+{
+  "name": "alice-website",
+  "private": true,
+  "type": "module",
+  "description": "Build and SEO tooling for Alice the Time Bender static site",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "audit:seo": "node scripts/audit-seo.mjs",
+    "audit:preview-base": "node scripts/audit-preview-base.mjs"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
