@@ -1,7 +1,12 @@
-import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import {
+  readFileSync,
+  existsSync,
+  readdirSync,
+  statSync,
+} from 'node:fs';
+import { join, relative, dirname, normalize } from 'node:path';
 import * as cheerio from 'cheerio';
-import { SITE_BASE_PATH, findPageByFile } from './seo-config.mjs';
+import { SITE, SITE_BASE_PATH, findPageByFile } from './seo-config.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const DIST = join(ROOT, 'dist');
@@ -34,13 +39,53 @@ function collectHtmlFiles(dir) {
   return files;
 }
 
-console.log('audit:preview-base — scanning dist/ …');
-console.log(`  SITE_BASE_PATH=${SITE_BASE_PATH || '(empty — production root)'}\n`);
+/**
+ * @param {string} distDir
+ * @param {string} fromRel e.g. ground-truth-method/index.html
+ * @param {string} href
+ * @returns {string | null} dist-relative file to check, or null to skip
+ */
+function resolveInternalFile(distDir, fromRel, href) {
+  if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('data:')) {
+    return null;
+  }
+  if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//')) {
+    return null;
+  }
 
-if (!SITE_BASE_PATH) {
-  console.log('No SITE_BASE_PATH set — preview-base checks skipped (production build).');
-  process.exit(0);
+  const hashIdx = href.indexOf('#');
+  const pathPart = hashIdx >= 0 ? href.slice(0, hashIdx) : href;
+  if (!pathPart) {
+    return null;
+  }
+
+  const fromDir = dirname(fromRel);
+  let resolved;
+  if (pathPart.startsWith('/')) {
+    resolved = pathPart.replace(/^\//, '');
+  } else {
+    resolved = normalize(join(fromDir, pathPart)).replace(/\\/g, '/');
+  }
+
+  if (resolved === '.' || resolved === '') {
+    return 'index.html';
+  }
+
+  const asFile = join(distDir, resolved);
+  if (existsSync(asFile) && statSync(asFile).isFile()) {
+    return resolved;
+  }
+
+  const asIndex = join(distDir, resolved, 'index.html');
+  if (existsSync(asIndex)) {
+    return join(resolved, 'index.html').replace(/\\/g, '/');
+  }
+
+  return resolved;
 }
+
+console.log('audit:preview-base — scanning dist/ …');
+console.log(`  SITE_BASE_PATH=${SITE_BASE_PATH || '(empty — custom domain root)'}\n`);
 
 if (!existsSync(DIST)) {
   console.error('dist/ not found — run npm run build first');
@@ -48,10 +93,7 @@ if (!existsSync(DIST)) {
 }
 
 const htmlFiles = collectHtmlFiles(DIST);
-const duplicateSegment = new RegExp(
-  `${escapeRegex(SITE_BASE_PATH)}${escapeRegex(SITE_BASE_PATH)}`
-);
-const doubleLocale = new RegExp(`${escapeRegex(SITE_BASE_PATH)}/[a-z]{2}/[a-z]{2}/`);
+const previewPrefix = `/${SITE.repoName}`;
 
 for (const filePath of htmlFiles) {
   const rel = relative(DIST, filePath).replace(/\\/g, '/');
@@ -63,73 +105,45 @@ for (const filePath of htmlFiles) {
 
   console.log(`${rel}:`);
 
-  // Duplicate SITE_BASE_PATH segments
-  if (duplicateSegment.test(html)) {
-    fail(`${rel}: duplicate SITE_BASE_PATH segment`);
+  if (!SITE_BASE_PATH) {
+    if (html.includes(previewPrefix)) {
+      fail(`${rel}: contains GitHub preview path ${previewPrefix} on production build`);
+    } else {
+      pass(`${rel}: no preview path prefix in HTML`);
+    }
   } else {
-    pass(`${rel}: no duplicate base path`);
+    const duplicateSegment = new RegExp(
+      `${escapeRegex(SITE_BASE_PATH)}${escapeRegex(SITE_BASE_PATH)}`
+    );
+    if (duplicateSegment.test(html)) {
+      fail(`${rel}: duplicate SITE_BASE_PATH segment`);
+    } else {
+      pass(`${rel}: no duplicate base path`);
+    }
   }
 
-  // Double locale prefix
-  if (doubleLocale.test(html)) {
-    fail(`${rel}: double locale prefix detected`);
-  } else {
-    pass(`${rel}: no double locale prefix`);
-  }
-
-  // Internal asset/link paths should use SITE_BASE_PATH for root-relative
   $('link[href], a[href], script[src], img[src]').each((_, el) => {
     const $el = $(el);
     const attr = $el.is('link') ? 'href' : $el.is('script') || $el.is('img') ? 'src' : 'href';
     const val = $el.attr(attr) || '';
 
-    if (
-      val.startsWith('http') ||
-      val.startsWith('mailto:') ||
-      val.startsWith('tel:') ||
-      val.startsWith('#') ||
-      val.startsWith('data:')
-    ) {
-      return;
-    }
-
-    // Canonical must NOT have preview base
-    if ($el.is('link[rel="canonical"]') && val.includes(SITE_BASE_PATH)) {
+    if ($el.is('link[rel="canonical"]') && SITE_BASE_PATH && val.includes(SITE_BASE_PATH)) {
       fail(`${rel}: canonical contains preview base: ${val}`);
-      return;
     }
-
-    // hreflang must NOT have preview base
-    if ($el.is('link[rel="alternate"]') && val.includes(SITE_BASE_PATH)) {
+    if ($el.is('link[rel="alternate"]') && SITE_BASE_PATH && val.includes(SITE_BASE_PATH)) {
       fail(`${rel}: hreflang contains preview base: ${val}`);
-      return;
     }
 
-    // Root-relative internal paths should be prefixed
-    if (val.startsWith('/') && !val.startsWith(SITE_BASE_PATH)) {
-      // fonts.googleapis.com etc. are absolute URLs; root-relative internal should be prefixed
-      if (!val.startsWith('//')) {
-        fail(`${rel}: root-relative path missing preview base: ${val}`);
-      }
-    }
+    const target = resolveInternalFile(DIST, rel, val);
+    if (target === null) return;
 
-    // Bare relative assets on subpages (e.g. assets/foo without ../)
-    if (
-      rel.includes('/') &&
-      !val.startsWith('/') &&
-      !val.startsWith('../') &&
-      !val.startsWith('./') &&
-      !val.startsWith('#') &&
-      (attr === 'src' || (attr === 'href' && !val.includes(':')))
-    ) {
-      // favicon etc. should have been rewritten to absolute with base
-      if (!val.startsWith(SITE_BASE_PATH)) {
-        fail(`${rel}: bare relative path on subpage: ${val}`);
-      }
+    const full = join(DIST, target);
+    if (!existsSync(full)) {
+      fail(`${rel}: broken internal ${attr} "${val}" → missing ${target}`);
     }
   });
 
-  pass(`${rel}: preview path scan complete`);
+  pass(`${rel}: internal link scan complete`);
   console.log('');
 }
 

@@ -13,11 +13,11 @@ export const SITE = {
 };
 
 export const CANONICAL_BASE = (
-  process.env.CANONICAL_BASE || 'https://alicethetimebender.com'
+  process.env.CANONICAL_BASE || 'https://www.alicethetimebender.com'
 ).replace(/\/+$/, '');
 
 export const SITE_BASE_PATH = normalizeBasePath(
-  process.env.SITE_BASE_PATH || '/Alice-Website'
+  process.env.SITE_BASE_PATH ?? ''
 );
 
 export const LOCALES = ['en'];

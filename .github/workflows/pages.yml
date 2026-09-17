@@ -36,8 +36,7 @@ jobs:
       - name: Build site
         run: npm run build
         env:
-          CANONICAL_BASE: https://alicethetimebender.com
-          SITE_BASE_PATH: /Alice-Website
+          CANONICAL_BASE: https://www.alicethetimebender.com
 
       - name: Audit SEO
         run: npm run audit:seo
