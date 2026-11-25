@@ -211,7 +211,7 @@ function buildJsonLd(page) {
     };
   }
 
-  if (page.id === 'ground-truth-method') {
+  if (page.id === 'ground-truth-method' || page.id === 'are-you-ok') {
     return {
       '@context': 'https://schema.org',
       '@type': 'WebPage',

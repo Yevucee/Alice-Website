@@ -47,6 +47,18 @@ export const PAGES = [
     ogImage: 'https://picsum.photos/id/1043/1800/1100?grayscale',
     schema: ['WebPage'],
   },
+  {
+    id: 'are-you-ok',
+    file: 'are-you-ok/index.html',
+    locale: 'en',
+    title: 'Are you OK? | Alice the Time Bender',
+    description: 'Are you OK? — Alice.',
+    path: '/are-you-ok/',
+    ogImage: 'https://picsum.photos/id/1018/1800/1100?grayscale',
+    schema: ['WebPage'],
+    minMainChars: 0,
+    sitemapPriority: 0.3,
+  },
 ];
 
 /**

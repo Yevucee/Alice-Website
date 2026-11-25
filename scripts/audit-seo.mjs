@@ -126,8 +126,9 @@ for (const filePath of htmlFiles) {
     fail(`${rel}: missing <main>`);
   } else {
     const text = stripTags(main.html() || '');
-    if (text.length < 200) {
-      fail(`${rel}: main text too short (${text.length} chars)`);
+    const minChars = page.minMainChars ?? 200;
+    if (text.length < minChars) {
+      fail(`${rel}: main text too short (${text.length} chars, need ${minChars})`);
     } else {
       pass(`${rel}: main text ≥200 chars (${text.length})`);
     }

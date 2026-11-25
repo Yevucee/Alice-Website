@@ -13,6 +13,7 @@ const COPY_PATHS = [
   '.nojekyll',
   'assets',
   'ground-truth-method',
+  'are-you-ok',
 ];
 
 console.log('Building Alice the Time Bender site…');

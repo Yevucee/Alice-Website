@@ -34,7 +34,7 @@ function buildSitemap() {
 ${alternates}
 ${xDefault}
     <changefreq>monthly</changefreq>
-    <priority>${page.id === 'home' ? '1.0' : '0.8'}</priority>
+    <priority>${page.sitemapPriority ?? (page.id === 'home' ? '1.0' : '0.8')}</priority>
   </url>`;
   });
 
