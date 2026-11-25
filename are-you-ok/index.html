@@ -27,10 +27,27 @@
         var(--img-hero) center/cover no-repeat;
       background-blend-mode:normal,multiply,normal;
       filter:sepia(.20) contrast(1.01) brightness(1.18)}
-  main{position:relative;z-index:2;text-align:center;padding:clamp(32px,8vw,80px) clamp(24px,5vw,64px);max-width:28ch}
-  blockquote{border:0;margin:0}
-  h1{font-size:clamp(42px,8vw,96px);font-weight:500;text-wrap:balance;color:#f4f0e8;margin-bottom:clamp(20px,4vw,36px)}
-  .byline{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(22px,3.2vw,32px);letter-spacing:.12em;color:#e6dfd1;font-style:italic}
+  main{position:relative;z-index:2;width:100%;text-align:center;padding:clamp(24px,6vw,48px) clamp(16px,5vw,40px)}
+  blockquote{border:0;margin:0;display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3.5vh,32px)}
+  h1{
+    font-size:clamp(1.5rem,4.8vw + 0.85rem,6rem);
+    font-weight:500;
+    line-height:1.05;
+    color:#f4f0e8;
+    margin:0;
+    max-width:100%;
+    white-space:nowrap;
+    text-shadow:0 2px 28px rgba(8,7,6,.45);
+  }
+  .byline{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-size:clamp(1.125rem,2.4vw + 0.65rem,2rem);
+    letter-spacing:.14em;
+    color:#e6dfd1;
+    font-style:italic;
+    margin:0;
+    text-shadow:0 1px 18px rgba(8,7,6,.4);
+  }
 </style>
 </head>
 <body>
