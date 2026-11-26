@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Are you OK? | Alice the Time Bender</title>
-<meta name="description" content="Are you OK? — Alice.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Are you ok? | Alice the Time Bender</title>
+<meta name="description" content="Are you ok? — Alice.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,14 @@
         var(--img-hero) center/cover no-repeat;
       background-blend-mode:normal,multiply,normal;
       filter:sepia(.20) contrast(1.01) brightness(1.18)}
-  main{position:relative;z-index:2;width:100%;text-align:center;padding:clamp(24px,6vw,48px) clamp(16px,5vw,40px)}
+  main{
+    position:relative;z-index:2;width:100%;text-align:center;
+    padding:
+      clamp(24px,6vw,48px)
+      max(clamp(16px,5vw,40px), env(safe-area-inset-right, 0px))
+      max(clamp(24px,6vw,48px), env(safe-area-inset-bottom, 0px))
+      max(clamp(16px,5vw,40px), env(safe-area-inset-left, 0px));
+  }
   blockquote{border:0;margin:0;display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3.5vh,32px)}
   h1{
     font-size:clamp(1.5rem,4.8vw + 0.85rem,6rem);
@@ -56,7 +63,7 @@
   <div class="hero-bg" aria-hidden="true"></div>
   <main>
     <blockquote cite="#">
-      <h1 class="display">“Are you OK?”</h1>
+      <h1 class="display">Are you ok?</h1>
       <p class="byline">Alice.</p>
     </blockquote>
   </main>
